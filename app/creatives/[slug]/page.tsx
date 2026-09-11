@@ -1,18 +1,35 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import Link from "next/link";
 
 export const revalidate = 60;
 
-// 1. Ubah tipe params menjadi Promise
+// 1. Fungsi untuk Generate Metadata (SEO Dinamis khusus URL ini)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const { data: project } = await supabase.from('creative_projects').select('*').eq('slug', slug).single();
+
+  if (!project) return { title: 'Project Not Found | ThorWorks' };
+
+  return {
+    title: `${project.title} | Creative Works`,
+    description: project.description,
+    openGraph: {
+      images: [project.thumbnail_url],
+    },
+  };
+}
+
+// 2. Komponen Halaman Utama
 export default async function CreativeProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
-  // 2. Lakukan await pada params
+  // 3. Wajib melakukan await pada params untuk mencegah error di Next.js 15+[cite: 3]
   const { slug } = await params;
 
   const { data: project } = await supabase
     .from('creative_projects')
     .select('*')
-    .eq('slug', slug) // 3. Gunakan variabel slug
+    .eq('slug', slug)
     .single();
 
   if (!project) {
