@@ -25,13 +25,13 @@ export default function Footer() {
 
         <div className="flex gap-6 text-sm font-medium">
           <h2>Let's Connect!</h2>
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-white transition-colors">
+          <a href="https://linkedin.com/in/nazheefthareq" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-white transition-colors">
             LinkedIn
           </a>
-          <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-white transition-colors">
+          <a href="https://github.com/nazheefthareq" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-white transition-colors">
             GitHub
           </a>
-          <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-white transition-colors">
+          <a href="https://instagram.com/nazheefthareq" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-white transition-colors">
             Instagram
           </a>
         </div>
