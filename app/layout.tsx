@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-// Import Plus Jakarta Sans dari Google Fonts
 import { Plus_Jakarta_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer"; // 1. Import Footer
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-jakarta", 
+  variable: "--font-jakarta",
   display: 'swap',
 });
 
@@ -28,13 +28,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Masukkan variabel font baru ke dalam tag html
     <html lang="en" className={`${plusJakarta.variable} ${clashDisplay.variable}`}>
-      <body className="antialiased selection:bg-brand-white selection:text-brand-black">
+      {/* 2. Tambahkan flex, flex-col, dan min-h-screen pada body */}
+      <body className="antialiased selection:bg-brand-white selection:text-brand-black flex flex-col min-h-screen">
         <Navbar />
-        <div className="pt-24">
+        
+        {/* 3. Bungkus children dengan flex-grow agar mendorong footer ke bawah */}
+        <div className="pt-24 flex-grow">
           {children}
         </div>
+
+        {/* 4. Render Footer di paling bawah */}
+        <Footer />
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import ProjectCard from "@/components/ProjectCard";
 import { supabase } from "@/lib/supabase/client";
 
 export const metadata: Metadata = {
-  title: "Tech Architecture | ThorWorks",
+  title: "Tech Works | ThorWorks",
   description: "Explore robust web, mobile, and game development projects engineered by Nazheef Thareq Asywal.",
 };
 

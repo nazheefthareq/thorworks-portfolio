@@ -1,14 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  /* Ubah pemanggilan variabel font-sans ke --font-jakarta */
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-clash-display), ui-sans-serif, system-ui, sans-serif;
 
-  /* Palet warna tetap sama */
   --color-brand-black: #050505;
   --color-brand-white: #FAFAFA;
-  --color-brand-accent: #222222;
+  --color-brand-accent: #096DFF; 
+
+  /* 1. Tambahkan variabel animasi kustom untuk Tailwind v4 */
+  --animate-text-gradient: text-gradient 4s linear infinite;
+}
+
+/* 2. Tambahkan keyframes untuk efek pergerakan gradien secara mulus */
+@keyframes text-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @layer base {
@@ -21,5 +35,9 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.025em; 
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
